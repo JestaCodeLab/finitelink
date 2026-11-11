@@ -15,6 +15,7 @@ export default defineConfig({
     script: 'defer',
     formatting: 'none',
     onFinished() {
+      writeFileSync(resolve(__dirname, 'dist/robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}/sitemap.xml\n`);
       const today = new Date().toISOString().slice(0, 10);
       const lastmod = (p: string) => posts.find((post) => `/insights/${post.slug}` === p)?.date ?? today;
       const urls = paths.map((p) => `  <url><loc>${SITE_URL}${p === '/' ? '' : p}</loc><lastmod>${lastmod(p)}</lastmod></url>`).join('\n');

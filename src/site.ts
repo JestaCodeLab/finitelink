@@ -1,5 +1,8 @@
-/** TODO: confirm the production domain — used for canonical URLs, Open Graph and the sitemap. */
-export const SITE_URL = 'https://finitelinkconsult.com';
+/**
+ * Production origin — used for canonical URLs, Open Graph, structured data, the sitemap and robots.txt.
+ * Must match the PRIMARY domain in Vercel → Settings → Domains (the other host should redirect to it).
+ */
+export const SITE_URL = 'https://www.finitelinkconsult.com';
 export const SITE_NAME = 'Finite Link Consult';
 export const ENQUIRY_EMAIL = 'info@finitelinkconsult.com';
 export const ADDRESS = '746/7 Edwardo Modhlana Rd, Awodome Estate, Kaneshie – Accra';

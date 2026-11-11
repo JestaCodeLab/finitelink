@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#0e1b4d" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="image" href="/images/logo.png" />
+    <!-- Critical CSS for the page loader, so it paints before anything else. -->
+    <style>
+      #page-loader { position: fixed; inset: 0; z-index: 1000; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px; background: #fff; transition: opacity 0.45s ease, visibility 0s linear 0.45s; /* no-JS safety net: always fade out */ animation: pl-failsafe 0.45s ease 6s forwards; }
+      #page-loader.is-done { opacity: 0; visibility: hidden; pointer-events: none; }
+      .pl-mark { position: relative; width: 128px; height: 128px; display: flex; align-items: center; justify-content: center; }
+      /* The logo sits in a circular disc so the spinner ring reads as one clean, round mark. */
+      .pl-disc { width: 96px; height: 96px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; overflow: hidden; box-shadow: 0 0 0 1px #e6e8f0, 0 10px 28px rgba(14, 27, 77, 0.16); animation: pl-pulse 1.6s ease-in-out infinite; }
+      .pl-disc img { width: 100%; height: 100%; display: block; object-fit: contain; border-radius: 50%; padding: 5px; }
+      .pl-ring { position: absolute; inset: 0; width: 100%; height: 100%; animation: pl-spin 1.1s linear infinite; }
+      .pl-ring circle { fill: none; stroke-width: 4; stroke-linecap: round; }
+      .pl-ring .track { stroke: #e6e8f0; }
+      .pl-ring .arc { stroke: #c8261c; stroke-dasharray: 110 270; }
+      .pl-name { font: 700 15px/1.2 'Plus Jakarta Sans', system-ui, sans-serif; letter-spacing: 0.14em; text-transform: uppercase; color: #0e1b4d; }
+      .pl-name span { color: #c8261c; }
+      @keyframes pl-spin { to { transform: rotate(360deg); } }
+      @keyframes pl-pulse { 0%, 100% { transform: scale(0.96); } 50% { transform: scale(1.03); } }
+      @keyframes pl-failsafe { to { opacity: 0; visibility: hidden; pointer-events: none; } }
+      @media (prefers-reduced-motion: reduce) { .pl-disc, .pl-ring { animation: none; } }
+    </style>
+  </head>
+  <body>
+    <!-- Page loader: shown on the first load only, removed by src/main.tsx once the page is ready. -->
+    <div id="page-loader" aria-hidden="true">
+      <div class="pl-mark">
+        <svg class="pl-ring" viewBox="0 0 128 128" focusable="false">
+          <circle class="track" cx="64" cy="64" r="60" />
+          <circle class="arc" cx="64" cy="64" r="60" />
+        </svg>
+        <div class="pl-disc"><img src="/images/logo.png" alt="" width="96" height="96" /></div>
+      </div>
+      <div class="pl-name">Finite Link <span>Consult</span></div>
+    </div>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

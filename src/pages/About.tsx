@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { CtaBand, PageHero } from '../components/Bits';
 import { Icon } from '../components/Icon';
 import { Seo } from '../components/Seo';
-import { partners } from '../data';
+import { partnerLogo, partners } from '../data';
 import { breadcrumbs, graph, organization } from '../jsonld';
 import { ADDRESS, SITE_URL } from '../site';
 
@@ -122,12 +122,16 @@ export function About() {
             <h2 className="h2 h2--sm">Universities we work with</h2>
           </div>
           <div className="partner-grid">
-            {partners.map((p) => (
-              <div className="partner-card partner-card--bordered" key={p.name}>
-                <strong>{p.name}</strong>
-                <span>{p.country}</span>
-              </div>
-            ))}
+            {partners.map((p) => {
+              const logo = partnerLogo(p.name);
+              return (
+                <div className="partner-card partner-card--bordered" key={p.name}>
+                  <span className="partner-card__logo">{logo ? <img src={logo} alt="" loading="lazy" /> : <span className="partner-card__initials" aria-hidden="true">{p.name.replace(/^The /, '').charAt(0)}</span>}</span>
+                  <strong>{p.name}</strong>
+                  <span>{p.country}</span>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

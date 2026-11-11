@@ -4,7 +4,7 @@ import { CtaBand, DestinationCard } from '../components/Bits';
 import { Icon, type IconName } from '../components/Icon';
 import { Seo } from '../components/Seo';
 import { WhatsAppCard } from '../components/WhatsAppCard';
-import { destinations, faqs, partners } from '../data';
+import { destinations, faqs, partnerLogo, partners } from '../data';
 import { graph, organization, website } from '../jsonld';
 import { PHONES } from '../site';
 
@@ -164,13 +164,16 @@ export function Home() {
       <section className="partners">
         <div className="container partners__inner">
           <span className="eyebrow eyebrow--muted">Some of our partner institutions</span>
-          <div className="chips">
-            {partners.map((p) => (
-              <span className="chip" key={p.name}>
-                {p.name}
-              </span>
-            ))}
-          </div>
+          <ul className="partner-logos">
+            {partners.map((p) => {
+              const logo = partnerLogo(p.name);
+              return (
+                <li className="partner-logo" key={p.name} title={p.name}>
+                  {logo ? <img src={logo} alt={p.name} loading="lazy" /> : <span className="partner-logo__name">{p.name}</span>}
+                </li>
+              );
+            })}
+          </ul>
         </div>
       </section>
 

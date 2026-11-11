@@ -1,7 +1,7 @@
 export interface University {
   abbr: string;
   name: string;
-  place: string;
+  place?: string;
   text?: string;
 }
 
@@ -48,7 +48,8 @@ export const destinations: Destination[] = [
     },
     universities: [
       { abbr: 'UM', name: 'University of Manitoba', place: 'Winnipeg, Manitoba', text: 'A university for people who embrace challenges and take action — its students and alumni shape conversations on everything from human rights to global health and climate change.' },
-      { abbr: 'TKU', name: 'The King’s University', place: 'Edmonton, Alberta', text: 'Values learning that is open and explores every dimension of our world, with a strong commitment to academic freedom, debate and critique.' },
+      // TODO(content): confirm King University's location and add a short description.
+      { abbr: 'KU', name: 'King University' },
       { abbr: 'UNBC', name: 'University of Northern British Columbia', place: 'Prince George, BC', text: 'Recognised for financial awards, student support and student satisfaction. Programmes include Arts, Commerce, Health Sciences and Nursing.' },
       // TODO(content): add a short description for KPU.
       { abbr: 'KPU', name: 'Kwantlen Polytechnic University', place: 'Metro Vancouver, BC' },
@@ -88,7 +89,7 @@ export const applySteps = [
 
 export const partners = [
   { name: 'University of Manitoba', country: 'Canada' },
-  { name: 'The King’s University', country: 'Canada' },
+  { name: 'King University', country: 'Canada' },
   { name: 'Kwantlen Polytechnic University', country: 'Canada' },
   { name: 'University of Northern British Columbia', country: 'Canada' },
   { name: 'University of Bolton', country: 'United Kingdom' },
@@ -114,3 +115,23 @@ export const team = [
   { name: 'Berlinda', role: 'Marketing', initials: 'B', bg: '#0E1B4D' },
   { name: 'Raphael Q.', role: 'Operations', initials: 'RQ', bg: '#2E3F9E' },
 ];
+
+/**
+ * Partner logos, keyed by the exact institution name used in `partners` / `destinations`.
+ * Institutions without an entry fall back to their name (or initials) in the UI.
+ *
+ * TODO(content): add a logo for Sumy State University.
+  */
+const logos: Record<string, string> = {
+  'University of Manitoba': '/images/partners/university-of-manitoba.png',
+  'King University': '/images/partners/king-university.png',
+  'Limerick Institute of Technology': '/images/partners/limerick-institute-of-technology.png',
+  'Kwantlen Polytechnic University': '/images/partners/kwantlen-polytechnic-university.jpg',
+  'University of Northern British Columbia': '/images/partners/unbc.jpg',
+  'University of Bolton': '/images/partners/university-of-bolton.png',
+  'NAME — Nest Academy of Management Education': '/images/partners/name-dubai.jpg',
+  'Namseoul University': '/images/partners/namseoul-university.gif',
+  'Hebei University of Technology': '/images/partners/hebei-university-of-technology.png',
+  'Kharkiv National Medical University': '/images/partners/kharkiv-national-medical-university.png',
+};
+export const partnerLogo = (name: string): string | undefined => logos[name];

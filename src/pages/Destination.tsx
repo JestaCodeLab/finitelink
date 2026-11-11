@@ -4,7 +4,7 @@ import { Breadcrumb } from '../components/Bits';
 import { Icon } from '../components/Icon';
 import { Seo } from '../components/Seo';
 import { WhatsAppCard } from '../components/WhatsAppCard';
-import { applySteps, destinations, requiredDocuments, type Destination as Dest } from '../data';
+import { applySteps, destinations, partnerLogo, requiredDocuments, type Destination as Dest } from '../data';
 import { breadcrumbs, graph } from '../jsonld';
 import { PHONES, SITE_URL, tel } from '../site';
 import { NotFound } from './NotFound';
@@ -86,11 +86,17 @@ function DestinationPage({ dest }: { dest: Dest }) {
               <div className="stack stack-16">
                 {dest.universities.map((u) => (
                   <div className="uni" key={u.name}>
-                    <span className="uni__abbr">{u.abbr}</span>
+                    {partnerLogo(u.name) ? (
+                      <span className="uni__logo">
+                        <img src={partnerLogo(u.name)} alt="" loading="lazy" />
+                      </span>
+                    ) : (
+                      <span className="uni__abbr">{u.abbr}</span>
+                    )}
                     <div className="uni__body">
                       <div className="uni__title">
                         <strong>{u.name}</strong>
-                        <span>{u.place}</span>
+                        {u.place && <span>{u.place}</span>}
                       </div>
                       {u.text && <p>{u.text}</p>}
                     </div>

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { CtaBand, DestinationCard } from '../components/Bits';
 import { Icon, type IconName } from '../components/Icon';
 import { Seo } from '../components/Seo';
-import { FormStatus, useEnquiry } from '../components/useEnquiry';
+import { WhatsAppCard } from '../components/WhatsAppCard';
 import { destinations, faqs, partners } from '../data';
 import { graph, organization, website } from '../jsonld';
 import { PHONES } from '../site';
@@ -177,7 +177,12 @@ export function Home() {
       <section className="section section--surface">
         <div className="container faq-layout">
           <Faq />
-          <EnquiryCard />
+          <WhatsAppCard
+            title="Have a question? Ask us on WhatsApp."
+            text="Tell us where you’d like to study and an advisor will reply with next steps — universities, requirements and your application."
+            message="Hello Finite Link Consult, I have a question about studying abroad."
+            showCall
+          />
         </div>
       </section>
 
@@ -329,47 +334,5 @@ function Faq() {
         })}
       </div>
     </div>
-  );
-}
-
-function EnquiryCard() {
-  const { onSubmit, sent } = useEnquiry('Website enquiry');
-  return (
-    <form className="form-card" onSubmit={onSubmit} noValidate>
-      <h3>Make an enquiry</h3>
-      <p className="hint">Tell us a little about you and an advisor will get back to you.</p>
-      <label className="field">
-        Full name
-        <input type="text" name="Name" placeholder="Ama Mensah" autoComplete="name" required />
-      </label>
-      <div className="row">
-        <label className="field">
-          Email
-          <input type="email" name="Email" placeholder="you@email.com" autoComplete="email" required />
-        </label>
-        <label className="field">
-          Phone
-          <input type="tel" name="Phone" placeholder="024 000 0000" autoComplete="tel" />
-        </label>
-      </div>
-      <label className="field">
-        Where would you like to study?
-        <select name="Destination">
-          <option>Not sure yet</option>
-          {destinations.map((d) => (
-            <option key={d.slug}>{d.name}</option>
-          ))}
-        </select>
-      </label>
-      <label className="field">
-        Your question
-        <textarea name="Question" rows={3} placeholder="e.g. I finished WASSCE in 2025 and want to study nursing…" />
-      </label>
-      <input className="hp" type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" />
-      <button className="btn btn--red btn--block" type="submit">
-        Send enquiry
-      </button>
-      <FormStatus sent={sent} />
-    </form>
   );
 }

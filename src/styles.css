@@ -221,24 +221,6 @@ a:hover { color: var(--red); }
 .faq-a[hidden] { display: none; }
 
 /* ---------- Forms (16px inputs so iOS doesn't zoom on focus) ---------- */
-.form-card { background: #fff; border-radius: var(--radius-lg); padding: 24px 20px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 24px 60px rgba(14, 27, 77, 0.08); min-width: 0; }
-.form-card--navy { background: var(--navy-900); color: #fff; box-shadow: none; }
-.form-card h2, .form-card h3 { font-weight: 700; letter-spacing: -0.01em; color: var(--navy-900); }
-.form-card h2 { font-size: 24px; }
-.form-card h3 { font-size: 22px; }
-.form-card--navy h3 { color: #fff; }
-.form-card .hint { font-size: 15px; color: var(--muted); }
-.form-card--navy .hint { color: var(--on-navy); }
-.row { display: flex; flex-direction: column; gap: 14px; }
-.field { display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600; color: var(--navy-900); min-width: 0; }
-.form-card--navy .field { color: #fff; }
-.field input, .field select, .field textarea { height: 50px; border: 1px solid var(--line-strong); border-radius: 12px; padding: 0 14px; font: 400 16px var(--font); background: #fff; color: var(--ink); min-width: 0; width: 100%; }
-.field textarea { height: auto; padding: 12px 14px; resize: vertical; }
-.form-card--navy .field input, .form-card--navy .field select { border: 0; }
-.form-card--navy .field input:focus-visible, .form-card--navy .field select:focus-visible { outline-color: var(--amber); }
-.form-status { font-size: 15px; font-weight: 600; padding: 12px 16px; border-radius: 12px; background: #e8f6ee; color: #14633a; }
-.form-status[hidden] { display: none; }
-.hp { position: absolute; left: -9999px; }
 
 /* ---------- CTA band ---------- */
 .cta { background: var(--red); border-radius: var(--radius-lg); padding: 32px 22px; color: #fff; display: flex; flex-direction: column; gap: 24px; position: relative; overflow: hidden; }
@@ -333,6 +315,8 @@ html:has(.subnav) { scroll-padding-top: 96px; }
 .wa-card__chip { background: #1fa855; color: #fff; }
 .wa-card h3 { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }
 .wa-card p { color: var(--on-navy); font-size: 15px; }
+.wa-card .wa-card__call { font-size: 14px; }
+.wa-card .wa-card__call a { color: #fff; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 
 /* ---------- Contact ---------- */
 .contact-cards { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: -64px; padding-bottom: 40px; position: relative; z-index: 1; }
@@ -450,9 +434,6 @@ html:has(.subnav) { scroll-padding-top: 96px; }
   .stats-strip { grid-template-columns: repeat(4, 1fr); }
   .stats-strip > div { padding: 28px 24px; }
   .split__media img { height: 380px; }
-  .row { flex-direction: row; }
-  .row > .field { flex: 1 1 0; }
-  .form-card { padding: 32px; }
   .uni { grid-template-columns: auto 1fr auto; align-items: center; }
   .uni__apply { grid-column: auto; }
   .page-hero h1, .dest-hero h1 { font-size: 44px; }
@@ -539,11 +520,9 @@ html:has(.subnav) { scroll-padding-top: 96px; }
 
   .faq-layout { flex-direction: row; align-items: flex-start; gap: 48px; }
   .faq-layout > .faq { flex: 1.4 1 0; gap: 28px; }
-  .faq-layout > .form-card { flex: 1 1 0; }
+  .faq-layout > .wa-card { flex: 1 1 0; }
   .faq-q { font-size: 17px; padding: 20px 24px; }
   .faq-a { padding: 0 24px 22px; }
-  .form-card--navy { padding: 32px; }
-  .form-card h2 { font-size: 28px; } .form-card h3 { font-size: 24px; }
 
   .cta { padding: 56px 48px; flex-direction: row; align-items: center; justify-content: space-between; }
   .cta::before { right: -60px; bottom: -120px; width: 320px; height: 320px; border-width: 56px; }

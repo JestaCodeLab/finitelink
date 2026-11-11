@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Breadcrumb } from '../components/Bits';
-import { Icon, WhatsAppIcon } from '../components/Icon';
+import { Icon } from '../components/Icon';
 import { Seo } from '../components/Seo';
+import { WhatsAppCard } from '../components/WhatsAppCard';
 import { applySteps, destinations, requiredDocuments, type Destination as Dest } from '../data';
 import { breadcrumbs, graph } from '../jsonld';
-import { PHONES, SITE_URL, WHATSAPP, tel, whatsappLink } from '../site';
+import { PHONES, SITE_URL, tel } from '../site';
 import { NotFound } from './NotFound';
 
 export function Destination() {
@@ -162,7 +163,11 @@ function DestinationPage({ dest }: { dest: Dest }) {
         </div>
 
         <aside className="dest-side">
-          <WhatsAppCard country={dest.name} />
+          <WhatsAppCard
+            title={`Interested in ${dest.name}?`}
+            text="Message an advisor on WhatsApp and we’ll help you with universities, requirements and your application."
+            message={`Hello Finite Link Consult, I’m interested in studying in ${dest.name}. Can you help me?`}
+          />
           <div className="side-box side-call">
             <span className="icon-chip icon-chip--sm tint-red">
               <Icon name="phone" />
@@ -234,27 +239,6 @@ function SectionTabs({ sections }: { sections: { id: string; label: string }[] }
           </a>
         ))}
       </nav>
-    </div>
-  );
-}
-
-function WhatsAppCard({ country }: { country: string }) {
-  return (
-    <div className="wa-card" data-hide-wa>
-      <span className="icon-chip wa-card__chip">
-        <WhatsAppIcon size={28} />
-      </span>
-      <h3>Interested in {country}?</h3>
-      <p>Message an advisor on WhatsApp and we’ll help you with universities, requirements and your application.</p>
-      <a
-        className="btn btn--whatsapp btn--block"
-        href={whatsappLink(`Hello Finite Link Consult, I’m interested in studying in ${country}. Can you help me?`)}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={`Chat with an advisor about studying in ${country} on WhatsApp, ${WHATSAPP}`}
-      >
-        <WhatsAppIcon size={20} /> Chat on WhatsApp
-      </a>
     </div>
   );
 }

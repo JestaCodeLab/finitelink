@@ -66,6 +66,7 @@ a:hover { color: var(--red); }
 .utility__group { display: flex; flex-wrap: wrap; gap: 4px 20px; }
 .utility a { color: #d6daea; display: inline-flex; align-items: center; min-height: 28px; }
 .utility a:hover { color: #fff; }
+.utility__group--end { align-items: center; margin-left: auto; }
 .utility__badge { font-weight: 600; color: #fff; }
 
 .site-header { background: #fff; border-bottom: 1px solid var(--line); position: relative; z-index: 10; }

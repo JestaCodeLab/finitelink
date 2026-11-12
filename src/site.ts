@@ -24,3 +24,6 @@ export const DIRECTIONS_URL = `https://www.google.com/maps/dir/?api=1&destinatio
 /** Google Maps embed (iframe src) for the Contact page. */
 export const MAP_EMBED_SRC =
   'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.9800136335707!2d-0.23611762442570575!3d5.569972233507662!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf999b06479e11%3A0xb1972c923d2989e7!2sFinite%20Link%20Consult%20Ltd!5e0!3m2!1sen!2sgh!4v1794430031686!5m2!1sen!2sgh';
+
+/** Staff webmail (cPanel). */
+export const WEBMAIL_URL = 'https://mail.finitelinkconsult.com:2096';

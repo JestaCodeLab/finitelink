@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { destinations } from '../data';
-import { PHONES, tel } from '../site';
+import { PHONES, tel, WEBMAIL_URL } from '../site';
 import { Icon } from './Icon';
 
 const navClass = ({ isActive }: { isActive: boolean }) => (isActive ? 'is-active' : undefined);
@@ -49,7 +49,12 @@ export function Header() {
             <a href="mailto:info@finitelinkconsult.com">info@finitelinkconsult.com</a>
             <a href={tel(PHONES[0])}>{PHONES[0]}</a>
           </div>
-          <span className="utility__badge hide-sm">ICEF-accredited agency</span>
+          <div className="utility__group utility__group--end">
+            <span className="utility__badge hide-sm">ICEF-accredited agency</span>
+            <a href={WEBMAIL_URL} target="_blank" rel="noopener noreferrer">
+              Mail Login
+            </a>
+          </div>
         </div>
       </div>
 
